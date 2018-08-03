@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import writeForm from '../decorators/writeForm';
 
-export default class Form extends Component {
+class Form extends Component {
 	onSubmit = e => {
 		e.preventDefault();
 		if (e.target.querySelector('[name]').value) {
@@ -24,38 +25,40 @@ export default class Form extends Component {
 			return value < 10 ? '0' + value : value;
 		};
 
-		let month = writeFullDate(currentDate.getMonth());
-		let day = writeFullDate(currentDate.getDay());
+		let month = writeFullDate(currentDate.getMonth() + 1);
+		let day = writeFullDate(currentDate.getDate());
 
 		return year + '-' + month + '-' + day;
 	};
 
 	render() {
-		return <form onSubmit={this.onSubmit}>
-			<legend>Add your task</legend>
-			<fieldset>
-				<label>
-					<span>Title</span>
-					<input type="text" name="title" placeholder="Title"/>
+		return <form className="form" onSubmit={this.onSubmit}>
+			<fieldset className="form__field">
+				<legend  className="form__legend">Add your task</legend>
+				<label className="form__label">
+					<span className="form__text">Title</span>
+					<input className="form__input" type="text" name="title" placeholder="Title"/>
 				</label>
-				<label>
-					<span>Priority</span>
-					<select name="priority" id="priority">
+				<label className="form__label">
+					<span className="form__text">Priority</span>
+					<select className="form__select" name="priority" id="priority">
 						<option value="high">High</option>
 						<option value="medium">Medium</option>
 						<option value="low">Low</option>
 					</select>
 				</label>
-				<label>
-					<span>Date</span>
-					<input id="date" type="date" />
+				<label className="form__label">
+					<span className="form__text">Date</span>
+					<input className="form__input" id="date" type="date" />
 				</label>
-				<label>
-					<span>Description</span>
-					<textarea name="description" id="description" cols="30" rows="10" placeholder="Add description"></textarea>
+				<label className="form__label">
+					<span className="form__text">Description</span>
+					<textarea className="form__textarea" name="description" id="description" cols="30" rows="10" placeholder="Add description"></textarea>
 				</label>
-				<button type="submit">Add</button>
+				<button  className="form__btn btn" type="submit">Add</button>
 			</fieldset>
 		</form>
 	}
 }
+
+export default writeForm(Form);
