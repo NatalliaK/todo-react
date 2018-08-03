@@ -7,7 +7,7 @@ body {
 .app-wrap {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
 }
 
 .form {
@@ -72,6 +72,18 @@ body {
 
 .form__check {
 	vertical-align: middle;
+}
+
+.form__search-wrap {
+	position: relative;
+}
+
+.form__img {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+
+	cursor: pointer;
 }
 
 .table {
