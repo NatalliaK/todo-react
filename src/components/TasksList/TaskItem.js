@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class TaskItem extends Component {
   render() {
-    const { title, priority, date } = this.props.tasks;
-
+    const { title, priority, date } = this.props.task;
     return (
       <tr>
         <td className="table__cell">
@@ -25,4 +25,11 @@ export default class TaskItem extends Component {
       </tr>
     );
   }
+}
+
+
+TaskItem.propTypes = {
+	defaultChecked: PropTypes.bool,
+	toggleDone: PropTypes.func,
+	task: PropTypes.object
 }
